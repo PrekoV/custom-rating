@@ -3,9 +3,6 @@ import {
     UlRow,
     Li,
     Global,
-    // FilledItem,
-    // HalfFilledItem,
-    // EmptyItem,
     Item,
     ItemComponent,
     HalfFilledItemComponent,
@@ -14,11 +11,9 @@ import {
 } from "./styled-rating";
 
 export default function Rating({
-    component,
-    filledComponent,
-    symbol = "☆",
+    component = "☆",
+    filledComponent= "★",
     onSetRating,
-    filledSymbol = "★",
     rating = 0
 }) {
     const [markHovered, setMarkHovered] = useState(0);
@@ -28,7 +23,6 @@ export default function Rating({
             <Global />
             {[1, 1, 1, 1, 1].map((item, id) => (
                 <Li>
-                    {/* {component ? (*/}
                         <> 
                             {markHovered ? (
                                 markHovered >= id + 1 ? (
@@ -42,7 +36,7 @@ export default function Rating({
                                             }
                                             onClick={() => onSetRating(id + 1)}
                                         >
-                                            {filledComponent || filledSymbol}
+                                            {filledComponent}
                                         </FilledItemComponent>
                                     </Item>
                                 ) : (
@@ -56,7 +50,7 @@ export default function Rating({
                                             setMarkHovered(id + 1)
                                         }
                                     >
-                                        {filledComponent || filledSymbol}
+                                        {filledComponent}
                                     </FilledItemComponent>
                                 </Item>
                             ) : (
@@ -76,7 +70,7 @@ export default function Rating({
                                                 onSetRating(id + 0.5)
                                             }
                                         >
-                                            {filledComponent || filledSymbol}
+                                            {filledComponent}
                                         </HalfFilledItemComponent>
                                     </Item>
                                 ) : (
@@ -90,7 +84,7 @@ export default function Rating({
                                             setMarkHovered(id + 0.5)
                                         }
                                     >
-                                        {filledComponent || filledSymbol} 
+                                        {filledComponent} 
                                     </HalfFilledItemComponent>
                                 </Item>
                             ) : (
@@ -104,61 +98,16 @@ export default function Rating({
                                         setMarkHovered(id + 0.5)
                                     }
                                 >
-                                    {component || symbol}
+                                    {component }
                                 </HalfEmptyItemComponent>
                             </Item>
                             <ItemComponent
                                 onMouseLeave={() => setMarkHovered(0)}
                                 onMouseEnter={() => setMarkHovered(id + 1)}
                             >
-                                {component || symbol}
+                                {component}
                             </ItemComponent>
                         </>
-                    {    
-                    // ) : (
-                    //     <>
-                    //         <Item>
-                    //             <HalfFilledItem
-                    //                 onMouseLeave={() => setMarkHovered(0)}
-                    //                 onMouseEnter={() =>
-                    //                     setMarkHovered(id + 0.5)
-                    //                 }
-                    //                 onClick={() => onSetRating(id + 0.5)}
-                    //                 color={
-                    //                     markHovered
-                    //                         ? markHovered >= id + 0.5
-                    //                             ? "black"
-                    //                             : ""
-                    //                         : rating >= id + 0.5
-                    //                         ? "black"
-                    //                         : ""
-                    //                 }
-                    //             >
-                    //                 {filledSymbol}
-                    //             </HalfFilledItem>
-                    //         </Item>
-                    //         <Item>
-                    //             <FilledItem
-                    //                 onMouseLeave={() => setMarkHovered(0)}
-                    //                 onMouseEnter={() => setMarkHovered(id + 1)}
-                    //                 onClick={() => onSetRating(id + 1)}
-                    //                 color={
-                    //                     markHovered
-                    //                         ? markHovered >= id + 1
-                    //                             ? "black"
-                    //                             : ""
-                    //                         : rating >= id + 1
-                    //                         ? "black"
-                    //                         : ""
-                    //                 }
-                    //             >
-                    //                 {filledSymbol}
-                    //             </FilledItem>
-                    //         </Item>
-                    //         <EmptyItem>{symbol}</EmptyItem>
-                     //   </>
-                   // )}
-                    }
                 </Li>
             ))}
         </UlRow>

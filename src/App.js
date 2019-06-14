@@ -16,17 +16,16 @@ function App() {
             <Rating
                 rating={ratingCircleStar}
                 onSetRating={setRatingCircleStar}
-                symbol={"✩"}
-                filledSymbol={"✪"}
+                component={"✩"}
+                filledComponent={"✪"}
             />
             rating: {ratingCircleStar}
-            {/* <Rating setRating={setRating} symbol={"♡"} filledSymbol={"♥"}/> */}
             <Rating
                 rating={ratingComponentStar}
                 onSetRating={setComponentRatingStar}
                 component={<Star/>}
                 filledComponent={<Star color="black"/>}
-            />rating: {ratingComponentStar}
+			/>rating: {ratingComponentStar}
         </div>
     );
 }
