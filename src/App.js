@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Rating from "./components/Rating/Rating";
+import Star from "./components/Star";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [ratingCircleStar, setRatingCircleStar] = useState(0);
+	const [ratingStar, setRatingStar] = useState(0);
+	const [ratingComponentStar, setComponentRatingStar] = useState(0);
+
+    return (
+        <div className="App">
+            ~
+            <Rating rating={ratingStar} onSetRating={setRatingStar} /> rating:
+            {ratingStar}
+            <Rating
+                rating={ratingCircleStar}
+                onSetRating={setRatingCircleStar}
+                symbol={"✩"}
+                filledSymbol={"✪"}
+            />
+            rating: {ratingCircleStar}
+            {/* <Rating setRating={setRating} symbol={"♡"} filledSymbol={"♥"}/> */}
+            <Rating
+                rating={ratingComponentStar}
+                onSetRating={setComponentRatingStar}
+                component={<Star/>}
+                filledComponent={<Star color="black"/>}
+            />rating: {ratingComponentStar}
+        </div>
+    );
 }
 
 export default App;
