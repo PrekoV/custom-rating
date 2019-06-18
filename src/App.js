@@ -5,14 +5,13 @@ import Star from "./components/Star";
 
 function App() {
     const [ratingCircleStar, setRatingCircleStar] = useState(0);
-	const [ratingStar, setRatingStar] = useState(0);
-	const [ratingComponentStar, setComponentRatingStar] = useState(0);
+    const [ratingStar, setRatingStar] = useState(0);
+    const [ratingComponentStar, setComponentRatingStar] = useState(0);
 
     return (
         <div className="App">
-            ~
-            <Rating rating={ratingStar} onSetRating={setRatingStar} /> rating:
-            {ratingStar}
+            <Rating rating={ratingStar} onSetRating={setRatingStar} />
+            rating: {ratingStar}
             <Rating
                 rating={ratingCircleStar}
                 onSetRating={setRatingCircleStar}
@@ -23,9 +22,10 @@ function App() {
             <Rating
                 rating={ratingComponentStar}
                 onSetRating={setComponentRatingStar}
-                component={<Star/>}
-                filledComponent={<Star color="black"/>}
-			/>rating: {ratingComponentStar}
+                component={<Star />}
+                filledComponent={<Star color="black" />}
+            />
+            rating: {ratingComponentStar}
         </div>
     );
 }
